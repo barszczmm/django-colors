@@ -35,10 +35,14 @@ class ColorPickerWidget(forms.TextInput):
         rendered = super(ColorPickerWidget, self).render(name, value, attrs)
         return rendered + mark_safe(u"""<script type="text/javascript">(function($){
 $(function(){
-    var preview = $('<div class="color-picker-preview"><div style="background-color:#%s"></div></div>').insertAfter('#id_%s');
-    $('#id_%s').ColorPicker({
-        color: '%s',
-        onSubmit: function(hsb, hex, rgb, el) { $(el).val(hex); $(el).ColorPickerHide();$(preview).find('div').css('backgroundColor', '#' + hex); },
-        onBeforeShow: function () { $(this).ColorPickerSetColor(this.value); }
-    }).bind('keyup', function(){ $(this).ColorPickerSetColor(this.value); });
-});})(django.jQuery);</script>""" % (value, name, name, value))
+    var input = $('#id_%(name)s'), color = '%(value)s',
+      preview = $('<div class="color-picker-preview"><div style="background-color:%(value)s"></div></div>').insertAfter(input);
+    input.add(preview).ColorPicker({
+        color: '%(value)s',
+        onSubmit: function(hsb, hex, rgb, el) { input.val(hex); $(el).ColorPickerHide();$(preview).find('div').css('backgroundColor', '#' + hex); },
+        onBeforeShow: function () { $(this).ColorPickerSetColor(input.val()); }
+    }).bind('keyup', function(){ $(this).ColorPickerSetColor(input.val()); });
+});})(django.jQuery);</script>""" % {
+            'name': name,
+            'value': value or ''
+        })
