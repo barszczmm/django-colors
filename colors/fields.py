@@ -1,13 +1,7 @@
-# -*- coding: utf-8 -*-
-
+from colors.validators import hex_color_code_validator
+from colors.widgets import ColorPickerWidget
 from django.conf import settings
 from django.db import models
-from django import forms
-from django.utils.text import capfirst
-
-
-from colors.widgets import ColorPickerWidget
-
 
 if 'south' in settings.INSTALLED_APPS:
     from south.modelsinspector import add_introspection_rules
@@ -15,9 +9,11 @@ if 'south' in settings.INSTALLED_APPS:
 
 
 class ColorField(models.CharField):
+
     def __init__(self, *args, **kwargs):
-        kwargs['max_length'] = 7
+        kwargs['max_length'] = 6
         super(ColorField, self).__init__(*args, **kwargs)
+        self.validators.append(hex_color_code_validator)
 
     def formfield(self, **kwargs):
         kwargs['widget'] = ColorPickerWidget
