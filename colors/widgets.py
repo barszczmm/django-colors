@@ -26,6 +26,12 @@ class ColorPickerWidget(forms.TextInput):
         super(ColorPickerWidget, self).__init__(attrs=attrs)
 
     def render(self, name, value, attrs=None):
+        attrs = attrs or {}
+        attrs.update({
+            'class': ' '.join(
+                [attrs.get('class', ''), 'color-picker-input']
+            ).strip()
+        })
         rendered = super(ColorPickerWidget, self).render(name, value, attrs)
         return rendered + mark_safe(u"""<script type="text/javascript">(function($){
 $(function(){

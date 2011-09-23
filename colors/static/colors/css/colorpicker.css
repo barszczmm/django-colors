@@ -1,11 +1,16 @@
+.color-picker-input {
+    float: left;
+}
 .color-picker-preview {
+    float: left;
     border:1px solid #ccc;
     height:23px;
-    left:122px;
-    position:absolute;
-    top:0;
+    position:relative;
     width:23px;
     -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    margin-left: 2px;
 }
 .color-picker-preview div {
     height:19px;
@@ -14,18 +19,22 @@
     top:2px;
     width:19px;
     -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
 }
 .colorpicker {
-	width: 356px;
-	height: 176px;
-	overflow: hidden;
-	position: absolute;
-	background: #666 url(../images/custom_background.png) no-repeat top center;
-	font-family: Arial, Helvetica, sans-serif;
-	display: none;
-    box-shadow:0 0 10px #444444;
-    -moz-box-shadow:0 0 10px #444444;
+    width: 356px;
+    height: 176px;
+    overflow: hidden;
+    position: absolute;
+    background: #666 url(../images/custom_background.png) no-repeat top center;
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+    box-shadow:0 0 10px #444;
+    -moz-box-shadow:0 0 10px #444;
     -moz-border-radius:4px;
+    -webkit-box-shadow:0 0 10px #444;
+    -webkit-border-radius:4px;
 }
 .colorpicker_color {
 	width: 150px;
