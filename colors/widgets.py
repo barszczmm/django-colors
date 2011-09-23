@@ -8,11 +8,17 @@ class ColorPickerWidget(forms.TextInput):
     class Media:
         css = {
             'all': (
-                settings.MEDIA_URL + 'colors/css/colorpicker.css',
+                '%s%s' % (
+                    getattr(settings, 'STATIC_URL', settings.MEDIA_URL),
+                    'colors/css/colorpicker.css',
+                ),
             )
         }
         js = (
-            settings.MEDIA_URL + 'colors/js/colorpicker.js',
+            '%s%s' % (
+                getattr(settings, 'STATIC_URL', settings.MEDIA_URL),
+                'colors/js/colorpicker.js',
+            ),
         )
 
     def __init__(self, language=None, attrs=None):
