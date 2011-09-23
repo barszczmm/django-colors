@@ -1,11 +1,10 @@
-VERSION = (0, 0, 3, 'alpha', 0)
+VERSION = (1, 0, 0, 'alpha', 0)
 
 # Most of this code is taken form from the Django project
 
 import os.path, re, colors
 
 def get_version():
-    return '0.0.4'
     version = '%s.%s' % (VERSION[0], VERSION[1])
     if VERSION[2]:
         version = '%s.%s' % (version, VERSION[2])
