@@ -1,5 +1,5 @@
 include MANIFEST.in
 include LICENSE
-recursive-include colors/media *
+recursive-include colors/static *
 recursive-include colors/templates *
 recursive-include colors/templatetags *
